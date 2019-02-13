@@ -1,0 +1,44 @@
+
+<style>
+.error-email, .error-null, .error-min, .error-mobile {
+    background: #F44336;
+}
+</style>
+
+<input type="text" class="txtOnlyNumber" placeholder="allows only number"><br><br>
+<input type="text" class="txtOnlyWords" placeholder="allows only text"><br><br>
+<input type="text" class="txtForEmail" placeholder="allows only email (error class: `error-email`)"><br><br>
+<input type="text" class="txtForNull" placeholder="allows only null (error class: `error-null`)"><br><br>
+<input type="text" class="txtForNullWithFocus" placeholder="allows only null focus (error class: `error-null`)"><br><br>
+<input type="text" class="txtForLength" placeholder="for min max (error class for min: `error-min`)"><br><br>
+<input type="text" class="txtForContactNumber" placeholder="allows only contact number (error class: `error-mobile`)">
+<script src="jquery.js"></script>
+<script src="validator.kd.min.js"></script>
+<script>
+    $('.txtOnlyNumber').allowOnlyNmber();
+
+    $('.txtOnlyWords').allowOnlyChar();
+
+    $('.txtForEmail').checkForEmail();
+
+    $('.txtForNull').checkForNull();
+
+    $('.txtForLength').checkForLength({
+        min: 0,
+        max: 5,
+        setFocusOnMin: false
+    });
+
+    $('.txtForNullWithFocus').checkForNull({
+        setFocus: true
+    });
+
+    $('.txtForContactNumber').checkForContactNumber();
+
+    function borderSuccess(b){
+        $(b).css({
+            border: "1px solid green",
+            background: "white"
+        });
+    }
+</script>
